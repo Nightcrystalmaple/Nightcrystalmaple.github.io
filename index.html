@@ -3,50 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的个人主页</title>
+    <title>Nightcrystalmaple's Learning Roadmap</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f4f6f8;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            background-color: #0d1117; /* 极客暗黑风 */
+            color: #c9d1d9;
+            line-height: 1.6;
+            padding: 40px 20px;
         }
-        .card {
-            background: white;
-            padding: 40px;
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        /* 个人头部卡片 */
+        .profile-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             text-align: center;
-            max-width: 400px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            margin-bottom: 30px;
         }
-        h1 {
-            color: #2c3e50;
+        .profile-card h1 {
+            color: #58a6ff;
+            font-size: 26px;
             margin-bottom: 10px;
         }
-        p {
-            color: #666;
-            line-height: 1.6;
+        .profile-card p {
+            color: #8b949e;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .tags {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
         }
         .tag {
-            display: inline-block;
-            background: #e1effe;
-            color: #1e429f;
+            background: #21262d;
+            border: 1px solid #30363d;
+            color: #79c0ff;
             padding: 4px 12px;
             border-radius: 20px;
+            font-size: 12px;
+        }
+
+        /* 学习路线板块 */
+        .section-title {
+            color: #f0f6fc;
+            font-size: 20px;
+            margin: 30px 0 20px 0;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 8px;
+        }
+        
+        /* 时间轴样式 */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid #30363d;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            padding: 20px;
+            border-radius: 8px;
+            transition: border-color 0.2s;
+        }
+        .timeline-item:hover {
+            border-color: #58a6ff;
+        }
+        /* 时间轴小圆点 */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -27px;
+            top: 22px;
+            width: 12px;
+            height: 12px;
+            background: #238636;
+            border: 2px solid #0d1117;
+            border-radius: 50%;
+        }
+        .timeline-date {
+            font-size: 12px;
+            color: #8b949e;
+            margin-bottom: 6px;
+        }
+        .timeline-title {
+            font-size: 16px;
+            color: #58a6ff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .timeline-desc {
             font-size: 14px;
-            margin-top: 15px;
+            color: #c9d1d9;
+        }
+
+        /* 底部版权 */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #8b949e;
+            font-size: 12px;
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>你好，世界！ 👋</h1>
-        <p>这是我的第一个托管在 GitHub Pages 上的静态网页。</p>
-        <div class="tag">GitHub Pages 在线运行中</div>
-    </div>
+
+    <div class="container">
+        <!-- 1. 个人简介区 -->
+        <div class="profile-card">
+            <h1> 👋</h1>
+            <p>Computer Science Student | 记录个人的计算机历程</p>
+            <div class="tags">
+                <span class="tag">C</span>
+            </div>
+        </div>
+
+        <!-- 2. 学习路线时间轴 -->
+        <h2 class="section-title">🗺️ 学习路线与进度与生活</h2>
+        
+        <div class="timeline">
+            <!-- 阶段 1：你可以把这里改成你想写的内容 -->
+            <div class="timeline-item">
+                <div class="timeline-date">2026.9.16 第一次建立这个网站</div>
+                <div class="timeline-title">一个记录自己日常的网站</div>
+                <div class="timeline-desc">在这里写你的学习心得、掌握的技术之类</div>
+            </div>
+
+            <!-- 阶段 2：如果需要更多阶段，可以复制上面这段粘贴到下面 -->
+            <div class="timeline-item">
+                <div class="timeline-date">2026年，我转专业转到计算机专业，完成我一年前的心愿</div>
+                <div class="timeline-title"></div>
+                <div class="timeline-desc"></div>
+            </div>
+        <div class="timeline-item">
+                <div class="timeline-date">这当然只是一个开始罢了，脚步仍未结束，接下来，我要给自己定一些计划</div>
+                <div class="timeline-title"></div>
+                <div class="timeline-desc"></div>
+            </div>
+        <div class="timeline-item">
+                <div class="timeline-date">回忆之前的一些任务，我25年8月份初次接触一点python，中间断了一年了，不过，我打算重新学习python</div>
+                <div class="timeline-title"></div>
+                <div class="timeline-desc"></div>
+            </div>
+                <div class="timeline-item">
+                <div class="timeline-date">C语言我是学的比较久的了，断断续续学了大概3-4个月吧，中间也断过好久，转完专业也断了几个月了，不过在9月初我重新拿起了它</div>
+                <div class="timeline-title"></div>
+                <div class="timeline-desc"></div>
+            </div>
+                <div class="timeline-item">
+                <div class="timeline-date">对于C语言，我看了C Primer Plus书的一大半，目前在看C陷阱与缺陷这本书，感觉这两本书很不错，前一本书适合当C11以及之前版本的C语言字典书，后者适合当前者的易错点补充</div>
+                <div class="timeline-title"></div>
+                <div class="timeline-desc"></div>
+            </div>
+        <div class="timeline-item">
+                <div class="timeline-date"></div>
+                <div class="timeline-title">接下来的计划</div>
+                <div class="timeline-desc">1.这几天的科目一刷到了80几分左右，打算再刷几天去把科目一考了<br>
+                                           2.暑假学了一点点的C++，打算把C陷阱与缺陷看完就继续学C++ Primer Plus<br>
+                                           3.打算继续学习Python的脚本，打算实现一点自动化，比如定时发送一些重要消息之类的</div>
+            </div>
+        <div class="timeline-item">
+
+                <div class="timeline-title">个人接下来要重点学习的学科和目标</div>
+                <div class="timeline-desc">1.C++<br>2.Python脚本<br>3.操作系统<br>4.数字电子技术<br>5.拿到驾照</div>
+                <div class="timeline-date">C++在我看完C陷阱与缺陷之后重点学习，Python要重点学习脚本，操作系统我打算买王道考研书学习
+                    ，数电作为计算机组成原理的关联课程，需重点学习，驾照争取在大二上拿到</div>
+            </div>            
+        <div class="timeline-item">
+                <div class="timeline-date"></div>
+                <div class="timeline-title">音乐推荐</div>
+                <div class="timeline-desc">1.泠鸢yousa<br>2.三无Marblue<br>这两个是我听的最多的，很不错</div>
+            </div>
+        </div>
+
+       <!--  3. 底部版权 
+        <footer>
+            <p>© 2026 Nightcrystalmaple. Powered by GitHub Pages.</p>
+        </footer>
+    </div> -->
+
 </body>
 </html>
