@@ -118,6 +118,21 @@
             color: #8b949e;
             font-size: 12px;
         }
+        /* 极客风按钮样式 */
+    .btn {
+        display: inline-block;
+        background: #238636; /* GitHub 经典的绿色提交按钮色 */
+        color: #ffffff;
+        padding: 8px 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+    .btn:hover {
+        background: #2ea043; /* 鼠标悬停时稍微变亮 */
+    }
     </style>
 </head>
 <body>
@@ -125,71 +140,151 @@
     <div class="container">
         <!-- 1. 个人简介区 -->
         <div class="profile-card">
-            <h1> 一位南京林业大学转专业到计算机的学生👋</h1>
+            <h1> 一位南京林业大学转专业到计算机的学生制作的小网站👋</h1>
             <p>Computer Science Student | 记录个人的计算机历程</p>
             <div class="tags">
                 <span class="tag">C</span>
             </div>
-        </div>
+<!-- 南林快捷导航板块 -->
+        <div class="profile-card" style="margin-top: 20px;">
+            <h3 style="margin-bottom: 12px; color: #58a6ff;">🏫 南林快捷传送门</h3>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <!-- 南林官网按钮 -->
+                <a href="https://www.njfu.edu.cn/" target="_blank" class="btn" style="background: #1f6feb;">南林主页</a>
+                
+                <!-- 教务处按钮 -->
+                <a href="https://jwc.njfu.edu.cn/" target="_blank" class="btn" style="background: #238636;">南林教务处主页</a>
+                <a href="https://jwxt.njfu.edu.cn/" target="_blank" class="btn" style="background: #302386;">教务系统</a>
 
-        <!-- 2. 学习路线时间轴 -->
-        <h2 class="section-title">🗺️ 学习路线与进度与生活</h2>
-        
-        <div class="timeline">
-            <!-- 阶段 1：你可以把这里改成你想写的内容 -->
-            <div class="timeline-item">
-                <div class="timeline-date">2026.9.16 第一次建立这个网站</div>
-                <div class="timeline-title">一个记录自己日常的网站</div>
-                <div class="timeline-desc">在这里写你的学习心得、掌握的技术之类</div>
             </div>
+        </div>            
+<!-- 【新增】其他网站跳转板块（包含红色按钮） -->
+        <div class="profile-card" style="margin-top: 20px;">
+            <h3 style="margin-bottom: 12px; color: #e3b341;">🔗 其他网站跳转</h3> <!-- 这里改了标题颜色，显得更醒目 -->
+            
+            <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 10px; background: #161b22; padding: 15px; border-radius: 8px; border: 1px solid #30363d;">
+                
+                <!-- 红色按钮 -->
+                <a href="https://ryebook.ptpress.cn/" target="_blank" class="btn" style="background: #da3633;">人邮数字教材</a>
+                
+                <!-- 网页上可见的文字注释/说明 -->
+                <span style="color: #8b949e; font-size: 13px;">（专业课教材与电子书阅读平台，目前用南林账号可免费看）</span>
 
-            <!-- 阶段 2：如果需要更多阶段，可以复制上面这段粘贴到下面 -->
-            <div class="timeline-item">
-                <div class="timeline-date">2026年，我转专业转到计算机专业，完成我一年前的心愿</div>
-                <div class="timeline-title"></div>
-                <div class="timeline-desc"></div>
-            </div>
-        <div class="timeline-item">
-                <div class="timeline-date">这当然只是一个开始罢了，脚步仍未结束，接下来，我要给自己定一些计划</div>
-                <div class="timeline-title"></div>
-                <div class="timeline-desc"></div>
-            </div>
-        <div class="timeline-item">
-                <div class="timeline-date">回忆之前的一些任务，我25年8月份初次接触一点python，中间断了一年了，不过，我打算重新学习python</div>
-                <div class="timeline-title"></div>
-                <div class="timeline-desc"></div>
-            </div>
-                <div class="timeline-item">
-                <div class="timeline-date">C语言我是学的比较久的了，断断续续学了大概3-4个月吧，中间也断过好久，转完专业也断了几个月了，不过在9月初我重新拿起了它</div>
-                <div class="timeline-title"></div>
-                <div class="timeline-desc"></div>
-            </div>
-                <div class="timeline-item">
-                <div class="timeline-date">对于C语言，我看了C Primer Plus书的一大半，目前在看C陷阱与缺陷这本书，感觉这两本书很不错，前一本书适合当C11以及之前版本的C语言字典书，后者适合当前者的易错点补充</div>
-                <div class="timeline-title"></div>
-                <div class="timeline-desc"></div>
-            </div>
-        <div class="timeline-item">
-                <div class="timeline-date"></div>
-                <div class="timeline-title">接下来的计划</div>
-                <div class="timeline-desc">1.这几天的科目一刷到了80几分左右，打算再刷几天去把科目一考了<br>
-                                           2.暑假学了一点点的C++，打算把C陷阱与缺陷看完就继续学C++ Primer Plus<br>
-                                           3.打算继续学习Python的脚本，打算实现一点自动化，比如定时发送一些重要消息之类的</div>
-            </div>
-        <div class="timeline-item">
-
-                <div class="timeline-title">个人接下来要重点学习的学科和目标</div>
-                <div class="timeline-desc">1.C++<br>2.Python脚本<br>3.操作系统<br>4.数字电子技术<br>5.拿到驾照</div>
-                <div class="timeline-date">C++在我看完C陷阱与缺陷之后重点学习，Python要重点学习脚本，操作系统我打算买王道考研书学习
-                    ，数电作为计算机组成原理的关联课程，需重点学习，驾照争取在大二上拿到</div>
-            </div>            
-        <div class="timeline-item">
-                <div class="timeline-date"></div>
-                <div class="timeline-title">音乐推荐</div>
-                <div class="timeline-desc">1.泠鸢yousa<br>2.三无Marblue<br>这两个是我听的最多的，很不错</div>
             </div>
         </div>
+        <!-- 在这里加上你的跳转按钮
+            <div style="margin-top: 20px;">
+                <a href="https://github.com/Nightcrystalmaple" target="_blank" class="btn">访问我的——————</a>
+            </div>
+        </div>
+    </div> -->
 
+<!-- 学习路线折叠面板 -->
+        <details id="roadmap-details" class="profile-card" style="margin-top: 20px; cursor: pointer;" open>
+            
+            <!-- 点击折叠的标题，加入了一个 span 作为状态按钮 -->
+            <summary onclick="toggleText(event)" style="font-size: 20px; font-weight: bold; color: #58a6ff; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                <span>🗺️ 学习路线与进度与生活</span>
+                <!-- 这里的按钮文字会根据折叠状态自动切换 -->
+                <span id="toggle-btn" style="font-size: 14px; background: #21262d; border: 1px solid #30363d; padding: 4px 10px; border-radius: 6px; color: #8b949e;">[折叠]</span>
+            </summary>
+            
+            <!-- 内部包裹的时间轴内容 -->
+            <div style="margin-top: 20px; cursor: default;">
+                <div class="timeline">
+                    
+                    <!-- 阶段 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-date">2026.9.16 第一次建立这个网站</div>
+                        <div class="timeline-title">一个记录自己日常的网站</div>
+                        <div class="timeline-desc">在这里写你的学习心得、掌握的技术之类</div>
+                    </div>
+
+                    <!-- 阶段 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-date">2026年，我转专业转到计算机专业，完成我一年前的心愿</div>
+                        <div class="timeline-title"></div>
+                        <div class="timeline-desc"></div>
+                    </div>
+
+                    <!-- 阶段 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-date">这当然只是一个开始罢了，脚步仍未结束，接下来，我要给自己定一些计划</div>
+                        <div class="timeline-title"></div>
+                        <div class="timeline-desc"></div>
+                    </div>
+
+                    <!-- 阶段 4 -->
+                    <div class="timeline-item">
+                        <div class="timeline-date">回忆之前的一些任务，我25年8月份初次接触一点python，中间断了一年了，不过，我打算重新学习python</div>
+                        <div class="timeline-title"></div>
+                        <div class="timeline-desc"></div>
+                    </div>
+
+                    <!-- 阶段 5 -->
+                    <div class="timeline-item">
+                        <div class="timeline-date">C语言我是学的比较久的了，断断续续学了大概3-4个月吧，中间也断过好久，转完专业也断了几个月了，不过在9月初我重新拿起了它</div>
+                        <div class="timeline-title"></div>
+                        <div class="timeline-desc"></div>
+                    </div>
+
+                    <!-- 阶段 6 -->
+                    <div class="timeline-item">
+                        <div class="timeline-date">对于C语言，我看了 C Primer Plus 书的一大半，目前在看 C 陷阱与缺陷这本书，感觉这两本书很不错，前一本书适合当 C11 以及之前版本的 C语言字典书，后者适合当前者的易错点补充</div>
+                        <div class="timeline-title"></div>
+                        <div class="timeline-desc"></div>
+                    </div>
+
+                    <!-- 阶段 7 -->
+                    <div class="timeline-item">
+                        <div class="timeline-date"></div>
+                        <div class="timeline-title">接下来的计划</div>
+                        <div class="timeline-desc">
+                            1. 这几天的科目一刷到了80几分左右，打算再刷几天去把科目一考了<br>
+                            2. 暑假学了一点点的 C++，打算把 C 陷阱与缺陷看完就继续学 C++ Primer Plus<br>
+                            3. 打算继续学习 Python 的脚本，打算实现一点自动化，比如定时发送一些重要消息之类的
+                        </div>
+                    </div>
+
+                    <!-- 阶段 8 -->
+                    <div class="timeline-item">
+                        <div class="timeline-title">个人接下来要重点学习的学科和目标</div>
+                        <div class="timeline-desc">
+                            1. C++<br>2. Python 脚本<br>3. 操作系统<br>4. 数字电子技术<br>5. 拿到驾照
+                        </div>
+                        <div class="timeline-date">
+                            C++ 在我看完 C 陷阱与缺陷之后重点学习，Python 要重点学习脚本，操作系统上课讲的太空了，而且也想不到怎么学，所以我打算买王道考研书学习，数电作为计算机组成原理的关联课程，需重点学习，驾照争取在大二上拿到
+                        </div>
+                    </div>
+
+                    <!-- 阶段 9 -->
+                    <div class="timeline-item">
+                        <div class="timeline-date"></div>
+                        <div class="timeline-title">音乐推荐</div>
+                        <div class="timeline-desc">
+                            1. 泠鸢 yousa<br>2. 三无 Marblue<br>这两个是我听的最多的，很不错
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </details>
+
+        <!-- 极客风的点击切换脚本 -->
+        <script>
+            function toggleText(event) {
+                const details = document.getElementById('roadmap-details');
+                const btn = document.getElementById('toggle-btn');
+                // 因为 details 的状态改变有一瞬间的延迟，所以用 setTimeout 检查它变化后的状态
+                setTimeout(() => {
+                    if (details.open) {
+                        btn.innerText = '[折叠]';
+                    } else {
+                        btn.innerText = '[展开]';
+                    }
+                }, 10);
+            }
+        </script>
        <!--  3. 底部版权 
         <footer>
             <p>© 2026 Nightcrystalmaple. Powered by GitHub Pages.</p>
