@@ -159,6 +159,12 @@
                 <!-- 教务系统按钮 -->
                 <a href="https://jwxt.njfu.edu.cn/" target="_blank" class="btn" style="background: #302386;">教务系统</a>
 
+                <!-- 南林网上办事大厅 -->
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <a href="https://ehall.njfu.edu.cn/" target="_blank" class="btn" style="background: #76ac9b;">南林网上办事大厅</a>
+                    <span style="color: #8b949e; font-size: 12px; margin-left: 2px;"></span>
+                </div>
+
                 <!-- 门禁子页面：用一个竖向容器包裹按钮和注释 -->
                 <div style="display: flex; flex-direction: column; gap: 4px;">
                     <a href="https://gygl.njfu.edu.cn/da-roadgate-resident-mobile/hall/" target="_blank" class="btn" style="background: #594ea2;">南林学生公寓门禁子页面</a>
@@ -205,7 +211,7 @@
     </div> -->
 
 <!-- 学习路线折叠面板 -->
-        <details id="roadmap-details" class="profile-card" style="margin-top: 20px; cursor: pointer;">
+        <details id="roadmap-details" class="profile-card" style="margin-top: 20px; cursor: pointer;"close>
             
             <!-- 点击折叠的标题，加入了一个 span 作为状态按钮 -->
             <summary onclick="toggleText(event)" style="font-size: 20px; font-weight: bold; color: #58a6ff; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
@@ -290,7 +296,25 @@
                             1. 泠鸢 yousa<br>2. 三无 Marblue<br>这两个是我听的最多的，很不错
                         </div>
                     </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">9月17日</div>
+                        <div class="timeline-title">C陷阱与缺陷</div>
+                        <div class="timeline-desc">今天看完这本书了，这本书是一本小书，书的内容不多。
+                    短小精悍。这本书是一本经典的老书，讲的内容还是以K&R C语言和未起草完的ANSI C为标准讲的。<br>
+                    虽然里面有些东西已经过时了，但一些思想还是很重要的，像在标准C建立之前，C语言该如何处理一些当时代码的未定义行为，<br>
+或者是如何处理空指针、缓冲区、以及一些和宏定义的可移植性的问题，还是很适合C语言学习者阅读的，因为里面有许多C语言学习者经常容易忽视或者出错的问题。<br>
+此时ANSI C还未建立，不同版本C语言就像一个个的分支的语言一样有许多不同的特性或者问题，而ANSI C建立后，利用一系列完整的标准以基本上统一了C语言，阅读这本书可以了解C语言的发展历史。<br>                    
+                        </div>
+                    </div>
 
+                    <!--
+                    <div class="timeline-item">
+                        <div class="timeline-date"></div>
+                        <div class="timeline-title"></div>
+                        <div class="timeline-desc">
+                        </div>
+                    </div> -->                    
                 </div>
             </div>
         </details>
