@@ -12,7 +12,7 @@
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0d1117; /* 极客暗黑风 */
+            background-color: #0d1117;
             color: #c9d1d9;
             line-height: 1.6;
             padding: 40px 20px;
@@ -21,7 +21,6 @@
             max-width: 700px;
             margin: 0 auto;
         }
-        /* 个人头部卡片 */
         .profile-card {
             background: #161b22;
             border: 1px solid #30363d;
@@ -41,22 +40,7 @@
             font-size: 14px;
             margin-bottom: 15px;
         }
-        .tags {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .tag {
-            background: #21262d;
-            border: 1px solid #30363d;
-            color: #79c0ff;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-        }
-
-        /* 学习路线板块 */
+        
         .section-title {
             color: #f0f6fc;
             font-size: 20px;
@@ -64,75 +48,106 @@
             border-bottom: 1px solid #30363d;
             padding-bottom: 8px;
         }
-        
+
         /* 时间轴样式 */
         .timeline {
             position: relative;
             padding-left: 20px;
             border-left: 2px solid #30363d;
+            margin-top: 20px;
         }
         .timeline-item {
             position: relative;
             margin-bottom: 25px;
             background: #161b22;
             border: 1px solid #30363d;
-            padding: 20px;
             border-radius: 8px;
+            padding: 15px 20px;
             transition: border-color 0.2s;
         }
         .timeline-item:hover {
             border-color: #58a6ff;
         }
-        /* 时间轴小圆点 */
-        .timeline-item::before {
+
+        /* ==================== 整体大合集折叠框样式 ==================== */
+        .timeline-group-container {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        /* 大合集时间轴左侧小圆点 */
+        .timeline-group-container::before {
             content: '';
             position: absolute;
             left: -27px;
             top: 22px;
             width: 12px;
             height: 12px;
-            background: #238636;
+            background: #1f6feb; /* 用蓝色区分大合集节点 */
             border: 2px solid #0d1117;
             border-radius: 50%;
+            z-index: 2;
         }
+
+        details.group-box {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            transition: border-color 0.2s;
+        }
+        details.group-box:hover {
+            border-color: #58a6ff;
+        }
+        details.group-box summary {
+            padding: 18px 20px;
+            cursor: pointer;
+            outline: none;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        details.group-box summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* 展开后的内部子集容器 */
+        .group-content {
+            padding: 10px 20px 20px 20px;
+            border-top: 1px solid #30363d;
+            background: #0d1117; /* 内部底色稍微深一点，形成层次感 */
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
         .timeline-date {
             font-size: 12px;
             color: #8b949e;
-            margin-bottom: 6px;
         }
         .timeline-title {
             font-size: 16px;
             color: #58a6ff;
             font-weight: 600;
-            margin-bottom: 8px;
         }
         .timeline-desc {
             font-size: 14px;
             color: #c9d1d9;
         }
 
-        /* 底部版权 */
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #8b949e;
-            font-size: 12px;
-        }
         /* 极客风按钮样式 */
-    .btn {
-        display: inline-block;
-        background: #238636; /* GitHub 经典的绿色提交按钮色 */
-        color: #ffffff;
-        padding: 8px 16px;
-        border-radius: 6px;
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: bold;
-        transition: background 0.2s;
-    }
-    .btn:hover {
-        background: #2ea043; /* 鼠标悬停时稍微变亮 */
-    }
+        .btn {
+            display: inline-block;
+            background: #238636;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: #2ea043;
+        }
     </style>
 </head>
 <body>
@@ -140,205 +155,195 @@
     <div class="container">
         <!-- 1. 个人简介区 -->
         <div class="profile-card">
-            <h1> 一位南林计算机学生制作的小网站👋</h1>
+            <h1>一位南林计算机学生制作的小网站👋</h1>
             <p>Computer Science Student | 记录个人的计算机历程</p>
-            <!-- <div class="tags">
-                <span class="tag">C</span>
-            </div> -->
-<!-- 南林快捷导航板块 -->
+        </div>
+
+        <!-- 南林快捷导航板块 -->
         <div class="profile-card" style="margin-top: 20px;">
             <h3 style="margin-bottom: 12px; color: #58a6ff;">🏫 南林快捷传送门</h3>
             <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-start;">
-                
-                <!-- 南林官网按钮 -->
                 <a href="https://www.njfu.edu.cn/" target="_blank" class="btn" style="background: #1f6feb;">南林主页</a>
-                
-                <!-- 教务处按钮 -->
                 <a href="https://jwc.njfu.edu.cn/" target="_blank" class="btn" style="background: #238636;">南林教务处主页</a>
-                
-                <!-- 教务系统按钮 -->
                 <a href="https://jwxt.njfu.edu.cn/" target="_blank" class="btn" style="background: #302386;">教务系统</a>
-
-                <!-- 南林网上办事大厅 -->
+                
                 <div style="display: flex; flex-direction: column; gap: 4px;">
                     <a href="https://ehall.njfu.edu.cn/" target="_blank" class="btn" style="background: #76ac9b;">南林网上办事大厅</a>
-                    <span style="color: #8b949e; font-size: 12px; margin-left: 2px;"></span>
                 </div>
 
-                <!-- 门禁子页面：用一个竖向容器包裹按钮和注释 -->
                 <div style="display: flex; flex-direction: column; gap: 4px;">
                     <a href="https://gygl.njfu.edu.cn/da-roadgate-resident-mobile/hall/" target="_blank" class="btn" style="background: #594ea2;">南林学生公寓门禁子页面</a>
                     <span style="color: #8b949e; font-size: 12px; margin-left: 2px;">（宿舍门禁通行记录与状态查询）</span>
                 </div>
-
             </div>
-        </div>         
-<!-- 【新增】其他网站跳转板块（包含红色按钮） -->
+        </div> 
+
+        <!-- 其他网站跳转板块 -->
         <div class="profile-card" style="margin-top: 20px;">
-            <h3 style="margin-bottom: 12px; color: #e3b341;">🔗 其他网站跳转</h3> <!-- 这里改了标题颜色，显得更醒目 -->
-            
+            <h3 style="margin-bottom: 12px; color: #e3b341;">🔗 其他网站跳转</h3> 
             <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 10px; background: #161b22; padding: 15px; border-radius: 8px; border: 1px solid #30363d;">
-                
-                <!-- 红色按钮 -->
                 <a href="https://ryebook.ptpress.cn/" target="_blank" class="btn" style="background: #da3633;">人邮数字教材</a>
-                
-                <!-- 网页上可见的文字注释/说明 -->
                 <span style="color: #8b949e; font-size: 13px;">（专业课教材与电子书阅读平台，目前用南林账号可免费看，进去后用CARSI登录即可）</span>
                 
                 <a href="http://cet-bm.neea.edu.cn/" target="_blank" class="btn" style="background: #da33d2;">CET英语四六级报名</a>
-                <span style="color: #8b949e; font-size: 13px;"></span>
-                
                 <a href="http://ncre.neea.edu.cn/" target="_blank" class="btn" style="background: #478f84;">NCRE全国计算机等级考试</a>
-                <span style="color: #8b949e; font-size: 13px;"></span>
-
             </div>
         </div>
 
-        <!--<div class="profile-card" style="margin-top: 20px;">
-            <h3 style="margin-bottom: 12px; color: #e3b341;">🔗 其他网站跳转</h3> 这里改了标题颜色，显得更醒目
+        <!-- 学习路线与生活板块 -->
+        <div class="profile-card" style="margin-top: 20px; text-align: left;">
+            <h3 class="section-title" style="margin-top: 0; color: #58a6ff;">🗺️ 个人初级的学习路线进度与生活</h3>
             
-            <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 10px; background: #161b22; padding: 15px; border-radius: 8px; border: 1px solid #30363d;">
+            <div class="timeline">
                 
-                
+                <!-- ==================== 合集一：2026.9.16 建站与转专业规划 ==================== -->
+                <div class="timeline-group-container">
+                    <details class="group-box" closed>
+                        <summary>
+                            <div class="timeline-date">2026.9.16</div>
+                            <div class="timeline-title" style="color: #58a6ff;">📁 建站初期的碎碎念与学习规划合集（点击可整体折叠/展开）</div>
+                        </summary>
+                        
+                        <div class="group-content">
+                            
+                            <div class="timeline-item" style="margin-top: 10px;">
+                                <div class="timeline-date">2026.9.16</div>
+                                <div class="timeline-title">第一次建立这个网站</div>
+                                <div class="timeline-desc">一个记录自己日常的网站，在这里写下个人的学习心得、掌握的技术等。</div>
+                            </div>
 
-            </div>
-        </div> -->        
-        <!-- 在这里加上你的跳转按钮
-            <div style="margin-top: 20px;">
-                <a href="https://github.com/Nightcrystalmaple" target="_blank" class="btn">访问我的——————</a>
-            </div>
-        </div>
-    </div> -->
+                            <div class="timeline-item">
+                                <div class="timeline-date">2026年</div>
+                                <div class="timeline-title">转专业</div>
+                                <div class="timeline-desc">我转专业转到计算机专业，完成我一年前的心愿，已成功转入计算机科学与技术专业。</div>
+                            </div>
 
-<!-- 学习路线折叠面板 -->
-        <details id="roadmap-details" class="profile-card" style="margin-top: 20px; cursor: pointer;"close>
-            
-            <!-- 点击折叠的标题，加入了一个 span 作为状态按钮 -->
-            <summary onclick="toggleText(event)" style="font-size: 20px; font-weight: bold; color: #58a6ff; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                <span>🗺️ 个人初级的学习路线进度与生活</span>
-                <!-- 这里的按钮文字会根据折叠状态自动切换 -->
-                <span id="toggle-btn" style="font-size: 14px; background: #21262d; border: 1px solid #30363d; padding: 4px 10px; border-radius: 6px; color: #8b949e;">[折叠]</span>
-            </summary>
-            
-            <!-- 内部包裹的时间轴内容 -->
-            <div style="margin-top: 20px; cursor: default;">
-                <div class="timeline">
-                    
-                    <!-- 阶段 1 -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">2026.9.16 第一次建立这个网站</div>
-                        <div class="timeline-title">一个记录自己日常的网站</div>
-                        <div class="timeline-desc">在这里写下个人的学习心得、掌握的技术等</div>
-                    </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">阶段目标</div>
+                                <div class="timeline-title">制定计划</div>
+                                <div class="timeline-desc">这当然只是一个开始罢了，脚步仍未结束，接下来，我要给自己定一些计划。</div>
+                            </div>
 
-                    <!-- 阶段 2 -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">2026年，我转专业转到计算机专业，完成我一年前的心愿</div>
-                        <div class="timeline-title"></div>
-                        <div class="timeline-desc"></div>
-                    </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">Python 学习重启</div>
+                                <div class="timeline-title">Python 语言回顾</div>
+                                <div class="timeline-desc">回忆之前的一些任务，我25年8月份初次接触一点python，中间断了一年了，不过，我打算重新学习python。</div>
+                            </div>
 
-                    <!-- 阶段 3 -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">这当然只是一个开始罢了，脚步仍未结束，接下来，我要给自己定一些计划</div>
-                        <div class="timeline-title"></div>
-                        <div class="timeline-desc"></div>
-                    </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">C 语言复习</div>
+                                <div class="timeline-title">C 语言重拾</div>
+                                <div class="timeline-desc">C语言我是学的比较久的了，断断续续学了大概3-4个月吧，中间也断过好久，转完专业也断了几个月了，不过在9月初我重新拿起了它。</div>
+                            </div>
 
-                    <!-- 阶段 4 -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">回忆之前的一些任务，我25年8月份初次接触一点python，中间断了一年了，不过，我打算重新学习python</div>
-                        <div class="timeline-title"></div>
-                        <div class="timeline-desc"></div>
-                    </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">书籍阅读进度</div>
+                                <div class="timeline-title">C Primer Plus 与 C 陷阱与缺陷</div>
+                                <div class="timeline-desc">对于C语言，我看了 C Primer Plus 书的一大半，目前在看 C 陷阱与缺陷这本书，感觉这两本书很不错，前一本书适合当 C11 以及之前版本的 C语言字典书，后者适合当前者的易错点补充。</div>
+                            </div>
 
-                    <!-- 阶段 5 -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">C语言我是学的比较久的了，断断续续学了大概3-4个月吧，中间也断过好久，转完专业也断了几个月了，不过在9月初我重新拿起了它</div>
-                        <div class="timeline-title"></div>
-                        <div class="timeline-desc"></div>
-                    </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">近期规划</div>
+                                <div class="timeline-title">接下来的计划</div>
+                                <div class="timeline-desc">
+                                    1. 这几天的科目一刷到了80几分左右，打算再刷几天去把科目一考了<br>
+                                    2. 暑假学了一点点的 C++，打算把 C 陷阱与缺陷看完就继续学 C++ Primer Plus<br>
+                                    3. 打算继续学习 Python 的脚本，打算实现一点自动化，比如定时发送一些重要消息之类的
+                                </div>
+                            </div>
 
-                    <!-- 阶段 6 -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">对于C语言，我看了 C Primer Plus 书的一大半，目前在看 C 陷阱与缺陷这本书，感觉这两本书很不错，前一本书适合当 C11 以及之前版本的 C语言字典书，后者适合当前者的易错点补充</div>
-                        <div class="timeline-title"></div>
-                        <div class="timeline-desc"></div>
-                    </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">学习科目重点</div>
+                                <div class="timeline-title">个人接下来要重点学习的学科和目标</div>
+                                <div class="timeline-desc">
+                                    1. C++<br>2. Python 脚本<br>3. 操作系统<br>4. 数字电子技术<br>5. 拿到驾照<br><br>
+                                    <span style="color: #8b949e; font-size: 13px;">C++ 在我看完 C 陷阱与缺陷之后重点学习，Python 要重点学习脚本，操作系统上课讲的太空了，而且也想不到怎么学，所以我打算买王道考研书学习，数电作为计算机组成原理的关联课程，需重点学习，驾照争取在大二上拿到。</span>
+                                </div>
+                            </div>
 
-                    <!-- 阶段 7 -->
-                    <div class="timeline-item">
-                        <div class="timeline-date"></div>
-                        <div class="timeline-title">接下来的计划</div>
-                        <div class="timeline-desc">
-                            1. 这几天的科目一刷到了80几分左右，打算再刷几天去把科目一考了<br>
-                            2. 暑假学了一点点的 C++，打算把 C 陷阱与缺陷看完就继续学 C++ Primer Plus<br>
-                            3. 打算继续学习 Python 的脚本，打算实现一点自动化，比如定时发送一些重要消息之类的
+                            <div class="timeline-item" style="margin-bottom: 0;">
+                                <div class="timeline-date">兴趣爱好</div>
+                                <div class="timeline-title">音乐推荐</div>
+                                <div class="timeline-desc">
+                                    1. 泠鸢 yousa<br>2. 三无 Marblue<br>这两个是我听的最多的，很不错。
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
-
-                    <!-- 阶段 8 -->
-                    <div class="timeline-item">
-                        <div class="timeline-title">个人接下来要重点学习的学科和目标</div>
-                        <div class="timeline-desc">
-                            1. C++<br>2. Python 脚本<br>3. 操作系统<br>4. 数字电子技术<br>5. 拿到驾照
-                        </div>
-                        <div class="timeline-date">
-                            C++ 在我看完 C 陷阱与缺陷之后重点学习，Python 要重点学习脚本，操作系统上课讲的太空了，而且也想不到怎么学，所以我打算买王道考研书学习，数电作为计算机组成原理的关联课程，需重点学习，驾照争取在大二上拿到
-                        </div>
-                    </div>
-
-                    <!-- 阶段 9 -->
-                    <div class="timeline-item">
-                        <div class="timeline-date"></div>
-                        <div class="timeline-title">音乐推荐</div>
-                        <div class="timeline-desc">
-                            1. 泠鸢 yousa<br>2. 三无 Marblue<br>这两个是我听的最多的，很不错
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-date">9月17日</div>
-                        <div class="timeline-title">C陷阱与缺陷</div>
-                        <div class="timeline-desc">今天看完这本书了，这本书是一本小书，书的内容不多。
-                    短小精悍。这本书是一本经典的老书，讲的内容还是以K&R C语言和未起草完的ANSI C为标准讲的。<br>
-                    虽然里面有些东西已经过时了，但一些思想还是很重要的，像在标准C建立之前，C语言该如何处理一些当时代码的未定义行为，<br>
-或者是如何处理空指针、缓冲区、以及一些和宏定义的可移植性的问题，还是很适合C语言学习者阅读的，因为里面有许多C语言学习者经常容易忽视或者出错的问题。<br>
-此时ANSI C还未建立，不同版本C语言就像一个个的分支的语言一样有许多不同的特性或者问题，而ANSI C建立后，利用一系列完整的标准以基本上统一了C语言，阅读这本书可以了解C语言的发展历史。<br>                    
-                        </div>
-                    </div>
-
-                    <!--
-                    <div class="timeline-item">
-                        <div class="timeline-date"></div>
-                        <div class="timeline-title"></div>
-                        <div class="timeline-desc">
-                        </div>
-                    </div> -->                    
+                    </details>
                 </div>
-            </div>
-        </details>
+                <!-- ==================== 合集一结束 ==================== -->
 
-        <!-- 极客风的点击切换脚本 -->
-        <script>
-            function toggleText(event) {
-                const details = document.getElementById('roadmap-details');
-                const btn = document.getElementById('toggle-btn');
-                // 因为 details 的状态改变有一瞬间的延迟，所以用 setTimeout 检查它变化后的状态
-                setTimeout(() => {
-                    if (details.open) {
-                        btn.innerText = '[折叠]';
-                    } else {
-                        btn.innerText = '[展开]';
-                    }
-                }, 10);
-            }
-        </script>
-       <!--  3. 底部版权 
-        <footer>
-            <p>© 2026 Nightcrystalmaple. Powered by GitHub Pages.</p>
-        </footer>
-    </div> -->
+
+<!-- ==================== 合集二：2026.9.17 阅读总结 ==================== -->
+                <div class="timeline-group-container">
+                    <details class="group-box" closed>
+                        <summary>
+                            <div class="timeline-date">2026.9.17</div>
+                            <div class="timeline-title" style="color: #58a6ff;">📁 C陷阱与缺陷阅读总结合集（点击可整体折叠/展开）</div>
+                        </summary>
+                        
+                        <div class="group-content">
+                            <div class="timeline-item" style="margin-top: 10px; margin-bottom: 0;">
+                                <div class="timeline-date">9月17日</div>
+                                <div class="timeline-title">C陷阱与缺陷阅读总结</div>
+                                <div class="timeline-desc">
+                                    今天看完这本书了，这本书是一本小书，书的内容不多。短小精悍。这本书是一本经典的老书，讲的内容还是以K&R C语言和未起草完的ANSI C为标准讲的。<br>
+                                    虽然里面有些东西已经过时了，但一些思想还是很重要的，像在标准C建立之前，C语言该如何处理一些当时代码的未定义行为，或者是如何处理空指针、缓冲区、以及一些和宏定义的可移植性的问题，还是很适合C语言学习者阅读的，因为里面有许多C语言学习者经常容易忽视或者出错的问题。<br>
+                                    此时ANSI C还未建立，不同版本C语言就像一个个的分支的语言一样有许多不同的特性或者问题，而ANSI C建立后，利用一系列完整的标准以基本上统一了C语言，阅读这本书可以了解C语言的发展历史。
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- ==================== 合集三：2026.9.18 科目一备考 ==================== -->
+                <div class="timeline-group-container">
+                    <details class="group-box" closed>
+                        <summary>
+                            <div class="timeline-date">2026.9.18</div>
+                            <div class="timeline-title" style="color: #58a6ff;">📁 放假准备备考科目一（点击可整体折叠/展开）</div>
+                        </summary>
+                        
+                        <div class="group-content">
+                            <div class="timeline-item" style="margin-top: 10px; margin-bottom: 0;">
+                                <div class="timeline-date">9月18日</div>
+                                <div class="timeline-title">准备备考科目一</div>
+                                <div class="timeline-desc">
+                                    昨天的科目一已经刷到93分了，感觉差不多可以预约了，不过明天再问问驾校的人预约哪个考点吧，我明天再刷刷一些题目吧，不是特别保证。<br>
+                                    今天对C陷阱与缺陷总结完了笔记，而且初步看了一点点的Python3网络爬虫开发这本书，不知道这本书看不看的下去，C Primer Plus我是断断续续了好多回，这本书依旧篇幅很长，慢慢看吧。
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+            <!-- 四 
+                <div class="timeline-group-container">
+                    <details class="group-box" closed>
+                        <summary>
+                            <div class="timeline-date">2026.9.18</div>
+                            <div class="timeline-title" style="color: #58a6ff;">📁（点击可整体折叠/展开）</div>
+                        </summary>
+                        
+                        <div class="group-content">
+                            <div class="timeline-item" style="margin-top: 10px; margin-bottom: 0;">
+                                <div class="timeline-date">9月19日</div>
+                                <div class="timeline-title"></div>
+                                <div class="timeline-desc">
+                                    <br>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            -->
+
+            </div>
+        </div>
+
+    </div>
 
 </body>
 </html>
