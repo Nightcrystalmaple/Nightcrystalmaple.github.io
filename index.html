@@ -10,15 +10,21 @@
             padding: 0;
             box-sizing: border-box;
         }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 24px;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #0d1117;
             color: #c9d1d9;
             line-height: 1.6;
-            padding: 40px 20px;
+            padding: 40px 20px 90px;
         }
+
         .container {
-            max-width: 700px;
+            max-width: 760px;
             margin: 0 auto;
         }
         .profile-card {
@@ -56,6 +62,15 @@
             border-left: 2px solid #30363d;
             margin-top: 20px;
         }
+
+        /* 日期之间留出更明确的视觉间隔，避免相邻日期“粘”在一起 */
+        .timeline-group-container + .timeline-group-container {
+            margin-top: 18px;
+        }
+
+        .timeline-group-container {
+            scroll-margin-top: 24px;
+        }
         .timeline-item {
             position: relative;
             margin-bottom: 25px;
@@ -67,6 +82,15 @@
         }
         .timeline-item:hover {
             border-color: #58a6ff;
+            transform: translateY(-1px);
+        }
+
+        .timeline-item {
+            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
         }
 
         /* ==================== 整体大合集折叠框样式 ==================== */
@@ -110,6 +134,26 @@
             display: none;
         }
 
+        details.group-box summary {
+            position: relative;
+            padding-right: 44px;
+        }
+
+        details.group-box summary::after {
+            content: "⌄";
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-55%);
+            color: #8b949e;
+            font-size: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        details.group-box[open] summary::after {
+            transform: translateY(-45%) rotate(180deg);
+        }
+
         /* 展开后的内部子集容器 */
         .group-content {
             padding: 10px 20px 20px 20px;
@@ -148,6 +192,96 @@
         .btn:hover {
             background: #2ea043;
         }
+
+        /* ==================== 快捷导航 ==================== */
+        .quick-nav {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            z-index: 1000;
+        }
+
+        .quick-nav-toggle {
+            border: 1px solid #30363d;
+            background: #161b22;
+            color: #f0f6fc;
+            padding: 10px 14px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+        }
+
+        .quick-nav-toggle:hover {
+            background: #1f2937;
+            border-color: #58a6ff;
+            transform: translateY(-1px);
+        }
+
+        .quick-nav-panel {
+            position: absolute;
+            right: 0;
+            bottom: 52px;
+            width: 230px;
+            max-height: min(70vh, 520px);
+            overflow-y: auto;
+            display: none;
+            padding: 8px;
+            background: rgba(22, 27, 34, 0.98);
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+        }
+
+        .quick-nav.open .quick-nav-panel {
+            display: block;
+        }
+
+        .quick-nav-panel a {
+            display: block;
+            padding: 9px 10px;
+            border-radius: 7px;
+            color: #c9d1d9;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .quick-nav-panel a:hover {
+            background: #21262d;
+            color: #58a6ff;
+        }
+
+        .quick-nav-label {
+            padding: 7px 10px 5px;
+            color: #8b949e;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 20px 12px 80px;
+            }
+
+            .container {
+                max-width: 100%;
+            }
+
+            .profile-card {
+                padding: 20px;
+            }
+
+            .quick-nav {
+                right: 14px;
+                bottom: 14px;
+            }
+
+            .quick-nav-panel {
+                width: min(230px, calc(100vw - 28px));
+            }
+        }
     </style>
 </head>
 <body>
@@ -160,7 +294,7 @@
         </div>
 
         <!-- 南林快捷导航板块 -->
-        <div class="profile-card" style="margin-top: 20px;">
+        <div class="profile-card" id="school-links" style="margin-top: 20px;">
             <h3 style="margin-bottom: 12px; color: #58a6ff;">🏫 南林快捷传送门(也记录了几个常用的子网站)</h3>
             <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-start;">
                 <div style="display:flex; flex-direction:column;">
@@ -188,7 +322,7 @@
         </div> 
 
         <!-- 其他网站跳转板块 -->
-        <div class="profile-card" style="margin-top: 20px;">
+        <div class="profile-card" id="other-links" style="margin-top: 20px;">
             <h3 style="margin-bottom: 12px; color: #e3b341;">🔗 其他网站跳转</h3> 
             <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 10px; background: #161b22; padding: 15px; border-radius: 8px; border: 1px solid #30363d;">
                 <a href="https://ryebook.ptpress.cn/" target="_blank" class="btn" style="background: #da3633;">人邮数字教材</a>
@@ -200,14 +334,14 @@
         </div>
 
         <!-- 学习路线与生活板块 -->
-        <div class="profile-card" style="margin-top: 20px; text-align: left;">
+        <div class="profile-card" id="timeline-section" style="margin-top: 20px; text-align: left;">
             <h3 class="section-title" style="margin-top: 0; color: #58a6ff;">🗺️ 个人初级的学习路线进度与生活</h3>
             
             <div class="timeline">
                 
                 <!-- ==================== 合集一：2026.9.16 建站与转专业规划 ==================== -->
-                <div class="timeline-group-container">
-                    <details class="group-box" closed>
+                <div class="timeline-group-container" id="date-916">
+                    <details class="group-box">
                         <summary>
                             <div class="timeline-date">2026.9.16</div>
                             <div class="timeline-title" style="color: #58a6ff;">📁 个人随笔与短期的计划（点击可整体折叠/展开）</div>
@@ -285,8 +419,8 @@
 
 
 <!-- ==================== 合集二：2026.9.17 阅读总结 ==================== -->
-                <div class="timeline-group-container">
-                    <details class="group-box" closed>
+                <div class="timeline-group-container" id="date-917">
+                    <details class="group-box">
                         <summary>
                             <div class="timeline-date">2026.9.17</div>
                             <div class="timeline-title" style="color: #58a6ff;">📁 C陷阱与缺陷阅读总结合集（点击可整体折叠/展开）</div>
@@ -307,8 +441,8 @@
                 </div>
 
                 <!-- ==================== 合集三：2026.9.18 科目一备考 ==================== -->
-                <div class="timeline-group-container">
-                    <details class="group-box" closed>
+                <div class="timeline-group-container" id="date-918">
+                    <details class="group-box">
                         <summary>
                             <div class="timeline-date">2026.9.18</div>
                             <div class="timeline-title" style="color: #58a6ff;">📁 放假准备备考科目一（点击可整体折叠/展开）</div>
@@ -328,8 +462,8 @@
                 </div>
 
 
-                <div class="timeline-group-container">
-                    <details class="group-box" closed>
+                <div class="timeline-group-container" id="date-921">
+                    <details class="group-box">
                         <summary>
                             <div class="timeline-date">2026.9.21</div>
                             <div class="timeline-title" style="color: #58a6ff;">📁再次拾起C++（点击可整体折叠/展开）</div>
@@ -349,8 +483,8 @@ C++ Primer Plus和C Primer Plus一样是一本好书，是C++11及以前的百�
                     </details>
                 </div>
 
-                <div class="timeline-group-container">
-                    <details class="group-box" closed>
+                <div class="timeline-group-container" id="date-923">
+                    <details class="group-box">
                         <summary>
                             <div class="timeline-date">2026.9.23</div>
                             <div class="timeline-title" style="color: #58a6ff;">📁国庆没法留校了（点击可整体折叠/展开）</div>
@@ -367,10 +501,50 @@ C++ Primer Plus和C Primer Plus一样是一本好书，是C++11及以前的百�
                     </details>
                 </div>
 
-<!--                <div class="timeline-group-container">
-                    <details class="group-box" closed>
+                <div class="timeline-group-container" id="date-924">
+                    <details class="group-box">
                         <summary>
-                            <div class="timeline-date">2026.9.23</div>
+                            <div class="timeline-date">2026.9.24</div>
+                            <div class="timeline-title" style="color: #58a6ff;">📁今晚终于没课了（点击可整体折叠/展开）</div>
+                        </summary>
+
+                        <div class="group-content">
+                            <div class="timeline-item" style="margin-top: 10px;">
+                                <div class="timeline-date">9月24日</div>
+                                <div class="timeline-title">终于迎来了少有的假期</div>
+                                <div class="timeline-desc">
+                                    也许可以稍微放放假了，但我回家还是要刷科一，打算10月7日在这边考试，初步决定是6号回学校。<br>
+                                    回家有什么打算呢，除了打算刷科一，还要把操作系统给看看，这玩意一眼看着全是概念，太虚了，要回去多背一背这个学科，乍一看是个偏文科的学科。C/C++肯定要学习，尤其是C++，要重点学习面向对象编程了。<br>
+                                    线性代数、离散数学、大学物理肯定要记笔记。不过我现在还没收拾。
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="timeline-group-container" id="date-926">
+                    <details class="group-box">
+                        <summary>
+                            <div class="timeline-date">2026.9.26</div>
+                            <div class="timeline-title" style="color: #58a6ff;">📁终于回到家了（点击可整体折叠/展开）</div>
+                        </summary>
+                        
+                        <div class="group-content">
+                            <div class="timeline-item" style="margin-top: 10px; margin-bottom: 0;">
+                                <div class="timeline-date">9月26日</div>
+                                <div class="timeline-title">好不容易又放假了</div>
+                                <div class="timeline-desc">能在家里待一段时间了，其实我还是比较适应学校的环境，奈何放假不太好留校，还是只能选择回去了。<br>
+今天下午有什么打算呢，打算先把一些作业写了，然后学C++的面向对象，刚回家的时候有点头晕，躺了一会感觉好一些了，那现在就继续学习吧!<br>
+人还是需要一直坚持的恒心和勇气去尝试一些未知的知识，当自己的认识面广了之后，才会发现自己的知识储备是多么渺小，所以这也是我想继续学习下去的理由。<br>                                   
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+                <!-- <div class="timeline-group-container">
+                    <details class="group-box">
+                        <summary>
+                            <div class="timeline-date">2026.9.</div>
                             <div class="timeline-title" style="color: #58a6ff;">📁（点击可整体折叠/展开）</div>
                         </summary>
                         
@@ -383,13 +557,78 @@ C++ Primer Plus和C Primer Plus一样是一本好书，是C++11及以前的百�
                             </div>
                         </div>
                     </details>
-                </div>
-
-            -->
-
+                </div> -->
             </div>
         </div>
     </div>
+
+
+    <!-- ==================== 悬浮快捷导航 ==================== -->
+    <div class="quick-nav" id="quickNav">
+        <button class="quick-nav-toggle" type="button" aria-expanded="false" aria-controls="quickNavPanel" onclick="toggleQuickNav()">
+            ☰ 快捷导航
+        </button>
+
+        <nav class="quick-nav-panel" id="quickNavPanel" aria-label="页面快捷导航">
+            <div class="quick-nav-label">页面区域</div>
+            <a href="#school-links">🏫 南林快捷传送门</a>
+            <a href="#other-links">🔗 其他网站跳转</a>
+            <a href="#timeline-section">🗺️ 学习路线时间轴</a>
+
+            <div class="quick-nav-label">时间轴</div>
+            <a href="#date-916">📅 9月16日</a>
+            <a href="#date-917">📅 9月17日</a>
+            <a href="#date-918">📅 9月18日</a>
+            <a href="#date-921">📅 9月21日</a>
+            <a href="#date-923">📅 9月23日</a>
+            <a href="#date-924">📅 9月24日</a>
+            <a href="#date-926">📅 9月26日</a>
+
+            <div class="quick-nav-label">其他</div>
+            <a href="#">⬆️ 返回顶部</a>
+        </nav>
+    </div>
+
+    <script>
+        function toggleQuickNav() {
+            const nav = document.getElementById("quickNav");
+            const button = nav.querySelector(".quick-nav-toggle");
+            const isOpen = nav.classList.toggle("open");
+            button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        }
+
+        // 点击导航后自动收起菜单
+        document.querySelectorAll(".quick-nav-panel a").forEach(link => {
+            link.addEventListener("click", () => {
+                const nav = document.getElementById("quickNav");
+                const button = nav.querySelector(".quick-nav-toggle");
+                nav.classList.remove("open");
+                button.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        // 点击页面其他位置时自动收起
+        document.addEventListener("click", (event) => {
+            const nav = document.getElementById("quickNav");
+            if (!nav.contains(event.target)) {
+                nav.classList.remove("open");
+                nav.querySelector(".quick-nav-toggle").setAttribute("aria-expanded", "false");
+            }
+        });
+
+        // 记住用户最后一次展开/折叠的时间轴状态
+        document.querySelectorAll("details.group-box").forEach((detail, index) => {
+            const key = `roadmap-group-${index}`;
+            const savedState = localStorage.getItem(key);
+
+            if (savedState === "open") detail.open = true;
+            if (savedState === "closed") detail.open = false;
+
+            detail.addEventListener("toggle", () => {
+                localStorage.setItem(key, detail.open ? "open" : "closed");
+            });
+        });
+    </script>
 
 </body>
 </html>
