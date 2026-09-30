@@ -260,6 +260,62 @@
             font-weight: 700;
         }
 
+
+        /* ==================== 29届考研初试倒计时 ==================== */
+        .grad-countdown-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 20px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+        }
+
+        .grad-countdown-card h3 {
+            color: #58a6ff;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .grad-countdown-subtitle {
+            color: #8b949e;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .countdown-number {
+            font-size: 48px;
+            line-height: 1.1;
+            font-weight: 800;
+            color: #f0f6fc;
+            letter-spacing: 1px;
+        }
+
+        .countdown-unit {
+            color: #8b949e;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .countdown-date {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 7px 12px;
+            border: 1px solid #30363d;
+            border-radius: 999px;
+            color: #c9d1d9;
+            font-size: 13px;
+            background: #0d1117;
+        }
+
+        .countdown-note {
+            color: #8b949e;
+            font-size: 12px;
+            line-height: 1.6;
+            margin-top: 12px;
+        }
+
         @media (max-width: 640px) {
             body {
                 padding: 20px 12px 80px;
@@ -283,6 +339,7 @@
             }
         }
     </style>
+    
 </head>
 <body>
 
@@ -321,15 +378,24 @@
             </div>
         </div> 
 
-        <!-- 其他网站跳转板块 -->
+<!-- 其他网站跳转板块 -->
+<!-- 其他网站跳转板块 -->
         <div class="profile-card" id="other-links" style="margin-top: 20px;">
             <h3 style="margin-bottom: 12px; color: #e3b341;">🔗 其他网站跳转</h3> 
             <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 10px; background: #161b22; padding: 15px; border-radius: 8px; border: 1px solid #30363d;">
+                <!-- 第一行：人邮数字教材 -->
                 <a href="https://ryebook.ptpress.cn/" target="_blank" class="btn" style="background: #da3633;">人邮数字教材</a>
                 <span style="color: #8b949e; font-size: 13px;">（专业课教材与电子书阅读平台，目前用南林账号可免费看，进去后用CARSI登录即可）</span>
                 
+                <!-- 第二行：中国教育考试网（单独一列，用一个隐形换行撑开宽度） -->
+                <div style="width: 100%; height: 0; margin: 0;"></div>
+                <a href="https://www.neea.edu.cn/" target="_blank" class="btn" style="background: #641fcd;">中国教育考试网</a>
+                
+                <!-- 第三行/后续按钮：按需继续顺延或排布 -->
+                <div style="width: 100%; height: 0; margin: 0;"></div>
                 <a href="http://cet-bm.neea.edu.cn/" target="_blank" class="btn" style="background: #da33d2;">CET英语四六级报名</a>
                 <a href="http://ncre.neea.edu.cn/" target="_blank" class="btn" style="background: #478f84;">NCRE全国计算机等级考试</a>
+                <a href="https://yz.chsi.com.cn/" target="_blank" class="btn" style="background: #5099a9;">中国研究生招生信息网</a>
             </div>
         </div>
 
@@ -541,6 +607,65 @@ C++ Primer Plus和C Primer Plus一样是一本好书，是C++11及以前的百�
                         </div>
                     </details>
                 </div>
+                <div class="timeline-group-container">
+                    <details class="group-box">
+                        <summary>
+                            <div class="timeline-date">2026.9.27</div>
+                            <div class="timeline-title" style="color: #58a6ff;">今天的小计划📁（点击可整体折叠/展开）</div>
+                        </summary>
+                        
+                        <div class="group-content">
+                            <div class="timeline-item" style="margin-top: 10px; margin-bottom: 0;">
+                                <div class="timeline-date">9月27日</div>
+                                <div class="timeline-title">上午简单记了一下C++的对象和类的笔记，感觉效率有点低，打算用电脑试试手。</div>
+                                <div class="timeline-desc">个人感觉用谷歌浏览器加上一些插件，把AI说的话给变成PDF文件或者markdown文件感觉很不错，适合给我存到文件夹里面当成笔记使用。<br>
+感觉这样学习C++配合我平板的电子书C++ Primer Plus的话效率会更高一些。今天学了一些C++的知识和看了好久的线性代数的知识，感觉今天学了挺久了。                                     
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="timeline-group-container">
+                    <details class="group-box">
+                        <summary>
+                            <div class="timeline-date">2026.9.29</div>
+                            <div class="timeline-title" style="color: #58a6ff;">📁今天学习的感想（点击可整体折叠/展开）</div>
+                        </summary>
+                        
+                        <div class="group-content">
+                            <div class="timeline-item" style="margin-top: 10px; margin-bottom: 0;">
+                                <div id="date-929" class="timeline-date">9月29日</div>
+                                <div class="timeline-title">今天看了好久的C++的知识了</div>
+                                <div class="timeline-desc">感觉C++ Primer Plus的书里的知识点好多好杂，就当个字典看看吧，我看用插件提炼AI的笔记这个方法感觉不错，感觉挺适合我的了。<br>
+C++ Primer Plus的第9章有些知识点感觉比较抽象，先把它给好好过一遍，然后在这边多搞点电子笔记存下来回头再看一看学一学。<br>
+
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>         
+                
+                <div class="timeline-group-container">
+                    <details class="group-box">
+                        <summary>
+                            <div class="timeline-date">2026.9.30</div>
+                            <div class="timeline-title" style="color: #58a6ff;">📁今天学习的感想（点击可整体折叠/展开）</div>
+                        </summary>
+                        
+                        <div class="group-content">
+                            <div class="timeline-item" style="margin-top: 10px; margin-bottom: 0;">
+                                <div class="timeline-date">9月30日</div>
+                                <div class="timeline-title">今天白天学了些C++和线性代数</div>
+                                <div class="timeline-desc">感觉今天白天学的挺多的，用AI记了一些C++相关的电子笔记。<br>
+C++ Primer Plus终于看到了第10章了，看到了类与对象了，可以和黑马程序员的视频对上了晚上来修改一下网站以及学一些科一，然后别的学科等会再说。<br>
+
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+                                     
                 <!-- <div class="timeline-group-container">
                     <details class="group-box">
                         <summary>
@@ -557,8 +682,20 @@ C++ Primer Plus和C Primer Plus一样是一本好书，是C++11及以前的百�
                             </div>
                         </div>
                     </details>
-                </div> -->
+                </div> -->                                
             </div>
+        </div>
+
+        <div class="grad-countdown-card" id="grad-countdown">
+            <h3>🎓 29届考研初试倒计时</h3>
+            <div class="grad-countdown-subtitle">距离预计初试开始还有</div>
+            <div class="countdown-number" id="countdown-days">--</div>
+            <div class="countdown-unit">天</div>
+            <div class="countdown-date" id="countdown-target">预计初试日期：2028年12月23日</div>
+        <!-- <div class="countdown-note">
+                ※ 2029届考研初试的具体日期目前尚未公布，此处暂按 2028年12月23日作为倒计时目标日期。<br>
+                ※ 等官方公布初试时间后，只需要修改下面 JavaScript 中的 targetDate 即可。
+            </div> -->
         </div>
     </div>
 
@@ -574,22 +711,45 @@ C++ Primer Plus和C Primer Plus一样是一本好书，是C++11及以前的百�
             <a href="#school-links">🏫 南林快捷传送门</a>
             <a href="#other-links">🔗 其他网站跳转</a>
             <a href="#timeline-section">🗺️ 学习路线时间轴</a>
+            <a href="#grad-countdown">🎓 29届考研初试倒计时</a>
 
             <div class="quick-nav-label">时间轴</div>
             <a href="#date-916">📅 9月16日</a>
-            <a href="#date-917">📅 9月17日</a>
+        <!--    <a href="#date-917">📅 9月17日</a>
             <a href="#date-918">📅 9月18日</a>
             <a href="#date-921">📅 9月21日</a>
             <a href="#date-923">📅 9月23日</a>
             <a href="#date-924">📅 9月24日</a>
             <a href="#date-926">📅 9月26日</a>
-
+        -->
+            <a href="#date-929">📅 9月29日</a>
+                        
             <div class="quick-nav-label">其他</div>
+            <a href="#grad-countdown">🎓 29届考研初试倒计时</a>
+
             <a href="#">⬆️ 返回顶部</a>
         </nav>
     </div>
 
     <script>
+
+    const targetDate = new Date("2028-12-23T00:00:00+08:00");
+        function updateGradCountdown() {
+            const now = new Date();
+            const diff = targetDate.getTime() - now.getTime();
+            const daysElement = document.getElementById("countdown-days");
+
+            if (diff > 0) {
+                const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+                daysElement.textContent = days;
+            } else if (diff <= 0) {
+                daysElement.textContent = "已到达";
+            }
+        }
+
+        updateGradCountdown();
+        setInterval(updateGradCountdown, 60 * 1000);
+
         function toggleQuickNav() {
             const nav = document.getElementById("quickNav");
             const button = nav.querySelector(".quick-nav-toggle");
